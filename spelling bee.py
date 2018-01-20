@@ -116,7 +116,9 @@ model.load_weights('model.h5')
 # In[ ]:
 
 
-model.fit([X_train, X_d_train], np.expand_dims(y_train,-1), validation_data=[[X_test, X_d_test], np.expand_dims(y_test,-1)], batch_size=64, verbose=1,callbacks= [ProgbarLogger()], nb_epoch=10)
+for i in range(50):
+    model.fit([X_train, X_d_train], np.expand_dims(y_train,-1), validation_data=[[X_test, X_d_test], np.expand_dims(y_test,-1)], batch_size=64, verbose=1,callbacks= [ProgbarLogger()], nb_epoch=5)
+    model.save_weights("model.h5")
 
 
 # In[ ]:
@@ -161,8 +163,8 @@ for index in range(20):
         "".join(predict).split("_")[0].ljust(17), str(real == predict))
 
 
-# In[9]:
+# In[11]:
 
 
-get_ipython().system('jupyter nbconvert --to script spelling-bee.ipynb')
+get_ipython().system('jupyter nbconvert --to script spelling\\ bee.ipynb')
 
